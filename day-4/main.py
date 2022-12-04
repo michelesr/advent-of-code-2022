@@ -27,11 +27,12 @@ items = tuple(
     ((tuple(item[0].split("-")), tuple(item[1].split("-"))) for item in items)
 )
 items = tuple((((range_strtoi(item[0]), range_strtoi(item[1])) for item in items)))
+items = tuple(((get_sets(item)) for item in items))
 
 # part one
-res = reduce(lambda count, item: count + int(is_subset(*get_sets(item))), items, 0)
+res = reduce(lambda count, item: count + int(is_subset(*item)), items, 0)
 print(res)
 
 # part two
-res = reduce(lambda count, item: count + int(is_overlap(*get_sets(item))), items, 0)
+res = reduce(lambda count, item: count + int(is_overlap(*item)), items, 0)
 print(res)
